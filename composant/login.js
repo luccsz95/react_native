@@ -62,10 +62,10 @@ const styles = StyleSheet.create({
     },
     
     title: {
-        fontSize: 20,
+        fontSize: 30,
         textAlign: 'center',
         marginBottom: 20,
-        color: '#00bfff\n',
+        color: '#8b0000',
     },
 
     errormessages : {
