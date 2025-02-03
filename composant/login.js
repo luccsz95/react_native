@@ -39,6 +39,7 @@ export function Login(){
             
             <Button 
                 style={styles.button} 
+                color={'#00bfff'}
                 title="Se connecter" onPress={VerifLogin}
             />
         </View>
@@ -53,12 +54,11 @@ const styles = StyleSheet.create({
     },
     
     input: {
-        height: 40,
-        borderColor: 'gray',
+        height: 50,
         borderWidth: 1,
-        paddingHorizontal: 10,
-        margin: 10,
-        borderRadius: 10,
+        margin: 12,
+        padding: 10,
+        width: 300,
     },
     
     title: {
@@ -75,6 +75,5 @@ const styles = StyleSheet.create({
     
     button: {
         margin: 10,
-        color: '#ec0000',
     }
 });
