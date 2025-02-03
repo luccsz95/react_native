@@ -3,16 +3,27 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {Login} from "./composant/login";
 import Inscription from "./composant/inscription";
-    
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Inscription/>
-      <Login/>
-      <StatusBar style="auto" />
-    </View>
-  );
+import {NavigationContainer} from "@react-navigation/native";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen 
+                    name="Inscription" 
+                    component={Inscription}
+                />
+                
+                <Tab.Screen 
+                    name="Login" 
+                    component={Login}
+                />
+            </Tab.Navigator>
+        </NavigationContainer>
+    );
 }
 
 const styles = StyleSheet.create({
