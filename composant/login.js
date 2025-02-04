@@ -15,14 +15,6 @@ export function Login() {
         }
     }
 
-    useEffect(() => {
-        setError("");
-    }, [emailRef.current]);
-
-    useEffect(() => {
-        setError("");
-    }, [passwordRef.current]);
-
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Connexion</Text>
