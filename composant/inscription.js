@@ -23,25 +23,6 @@ function Inscription() {
 
     }
 
-    useEffect(() => {
-        seterreur('');
-        if (useremail) useremail.current = null;
-    }, [useremail]);
-
-
-
-    useEffect(() => {
-        seterreur('');
-        if (usermdp) usermdp.current = null;
-    }, [usermdp]);
-
-
-
-
-    useEffect(() => {
-        seterreur('');
-        if (userconfirm) userconfirm.current = null;
-    }, [userconfirm]);
 
     return (
         <View style={style.container}>

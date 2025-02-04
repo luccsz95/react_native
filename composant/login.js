@@ -20,17 +20,10 @@ export function Login(){
     }
     }
     
-    useEffect(() => {
-        setError('');
-        if (useremail) useremail.current = null;
-    }, [useremail]);
 
 
 
-    useEffect(() => {
-        setError('');
-        if (userpassword) userpassword.current = null;
-    }, [userpassword]);
+
 
 
     
