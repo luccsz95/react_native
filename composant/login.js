@@ -1,45 +1,52 @@
 ﻿import React from "react";
-import {View, Text, StyleSheet, TextInput, Button} from "react-native";
-import { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { useState, useEffect, useRef } from 'react';
 
+export function Login() {
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
+    const [error, setError] = useState('');
 
-export function Login(){
-    const [email, setEmail]= useState('');
-    const [password, setPassword]= useState('');
-    const [error, setError]= useState('');
-    
     const VerifLogin = () => {
-        if(!email || !password) {
-           setError('Veuillez remplir tous les champs');
+        if (!emailRef.current || !passwordRef.current) {
+            setError("Veuillez remplir tous les champs");
+        } else {
+            setError('');
         }
     }
-    
+
     useEffect(() => {
-        setError('');
-    }, [email, password]
-    );
-    
+        setError("");
+    }, [emailRef.current]);
+
+    useEffect(() => {
+        setError("");
+    }, [passwordRef.current]);
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Connexion</Text>
-            
+
             <TextInput
                 style={styles.input}
                 placeholder="Email"
-                onChangeText={text=>setEmail(text)}
+                onChangeText={text => (emailRef.current = text, setError(''))}
             />
-            
+
             <TextInput
                 style={styles.input}
                 placeholder="Mot de passe"
-                onChangeText={text=>setPassword(text)}
+                secureTextEntry
+                onChangeText={text => (passwordRef.current = text, setError(''))}
+                
             />
 
-            {error ? <Text style={styles.errormessages}>{error}</Text> : null}
-            
-            <Button 
-                style={styles.button} 
-                title="Se connecter" onPress={VerifLogin}
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
+
+            <Button
+                style={styles.button}
+                title="Se connecter"
+                onPress={VerifLogin}
             />
         </View>
     );
@@ -51,7 +58,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20,
     },
-    
+
     input: {
         height: 40,
         borderColor: 'gray',
@@ -60,19 +67,19 @@ const styles = StyleSheet.create({
         margin: 10,
         borderRadius: 10,
     },
-    
+
     title: {
         fontSize: 20,
         textAlign: 'center',
         marginBottom: 20,
-        color: '#00bfff\n',
+        color: '#00bfff',
     },
 
-    errormessages : {
+    errorText: {
         color: '#ec0000',
         margin: 10,
     },
-    
+
     button: {
         margin: 10,
         color: '#ec0000',
