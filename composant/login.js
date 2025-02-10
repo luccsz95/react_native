@@ -1,23 +1,31 @@
 ﻿import React from "react";
 import {View, Text, StyleSheet, TextInput, Button} from "react-native";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 
 export function Login(){
-    const [email, setEmail]= useState('');
-    const [password, setPassword]= useState('');
+    // const [email, setEmail]= useState('');
+    // const [password, setPassword]= useState('');
     const [error, setError]= useState('');
+
+
+    const useremail = useRef('');
+    const userpassword = useRef('');
     
     const VerifLogin = () => {
-        if(!email || !password) {
-           setError('Veuillez remplir tous les champs');
-        }
+        if (!useremail.current || !userpassword.current)
+        setError('Tout les champs doivent être remplis')
+    else {
+        setError('');
+    }
     }
     
-    useEffect(() => {
-        setError('');
-    }, [email, password]
-    );
+
+
+
+
+
+
     
     return (
         <View style={styles.container}>
@@ -26,16 +34,16 @@ export function Login(){
             <TextInput
                 style={styles.input}
                 placeholder="Email"
-                onChangeText={text=>setEmail(text)}
+                onChangeText={(Text)=>(useremail.current=Text, setError(''))}
             />
             
             <TextInput
                 style={styles.input}
                 placeholder="Mot de passe"
-                onChangeText={text=>setPassword(text)}
+                onChangeText={(Text)=>(userpassword.current=Text, setError(''))}
             />
 
-            {error ? <Text style={styles.errormessages}>{error}</Text> : null}
+    {error ? <Text style={styles.errormessages}>{error}</Text> : null}
             
             <Button 
                 style={styles.button} 
@@ -62,10 +70,10 @@ const styles = StyleSheet.create({
     },
     
     title: {
-        fontSize: 20,
+        fontSize: 30,
         textAlign: 'center',
         marginBottom: 20,
-        color: '#00bfff\n',
+        color: '#8b0000',
     },
 
     errormessages : {

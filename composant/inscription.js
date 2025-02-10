@@ -1,46 +1,48 @@
 import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function Inscription() {
-    const [email, setemail] = useState('');
+    // const [email, setemail] = useState('');
     const [erreur, seterreur] = useState('');
-    const [motdepasse, setmotdepasse] = useState('');
-    const [confirmmotdepasse, setconfirmmotdepasse] = useState('');
+    // const [motdepasse, setmotdepasse] = useState('');
+    // const [confirmmotdepasse, setconfirmmotdepasse] = useState('');
+
+    const useremail = useRef('');
+    const usermdp = useRef('');
+    const userconfirm = useRef('');
+    
 
 
 
     const Verifinscription = () => {
-        if (!email || !motdepasse || !confirmmotdepasse)
-            seterreur('Tous les champs sont requis')
+        if (!useremail.current || !usermdp.current || !userconfirm.current)
+            seterreur('Tout les champs doivent être remplis')
         else {
             seterreur('');
         }
 
     }
 
-useEffect(() => {
-    seterreur ('');
-}, [email, motdepasse, confirmmotdepasse]);
 
     return (
         <View style={style.container}>
             <Text style={style.titre}>Inscription</Text>
             <TextInput
                 style={style.input}
-                onChangeText={setemail}
+                onChangeText={(Text)=>(useremail.current=Text, seterreur(''))}
                 value={Text}
                 placeholder='Email'></TextInput>
             <TextInput
                 style={style.input}
-                onChangeText={setmotdepasse}
+                onChangeText={(Text)=>(usermdp.current=Text, seterreur(''))}
                 value={Text}
                 placeholder='Mot de passe'></TextInput>
             <TextInput
                 style={style.input}
-                onChangeText={setconfirmmotdepasse}
+                onChangeText={(Text)=>(userconfirm.current=Text, seterreur(''))}
                 value={Text}
                 placeholder='Confirme mot de passe'></TextInput>
-            {erreur && <Text style={style.erreur}>{erreur}</Text>}
+            {erreur ? <Text style={style.erreur}>{erreur}</Text> : null}
             <Button
                 title='Inscris'
                 color='#00bfff'
