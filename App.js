@@ -5,6 +5,7 @@ import {Login} from "./composant/login";
 import Inscription from "./composant/inscription";
 import {NavigationContainer} from "@react-navigation/native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {GetTableDB} from "./composant/data";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,6 +21,11 @@ export default function App() {
                 <Tab.Screen 
                     name="Login" 
                     component={Login}
+                />
+
+                <Tab.Screen
+                    name="Boutique"
+                    component={GetTableDB}
                 />
             </Tab.Navigator>
         </NavigationContainer>
