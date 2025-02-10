@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Inscription from './composant/inscription';
 import { Login } from './composant/login';
+import {Boutique, data} from './composant/data';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -21,6 +22,11 @@ export default function App() {
             name='Login'
             component={Login}
           />
+          <Tab.Screen
+            name='Boutique'
+            component={Boutique}
+          />
+          
         </Tab.Navigator>
       </NavigationContainer>
 
